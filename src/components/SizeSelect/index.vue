@@ -30,7 +30,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.getters.size = 'mini'
+    // this.$store.getters.size = 'mini'
   },
   methods: {
     handleSetSize(size) {

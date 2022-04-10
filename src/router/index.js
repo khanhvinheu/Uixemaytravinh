@@ -83,19 +83,7 @@ export const constantRoutes = [
       }
     ]
   },
-  {
-    path: '/product',
-    component: Layout,
-    redirect: '/product',
-    children: [
-      {
-        path: 'product',
-        component: () => import('@/views/product/index'),
-        name: 'Product',
-        meta: { title: 'Product', icon: 'guide', affix: true }
-      }
-    ]
-  },
+  
   {
     path: '/documentation',
     component: Layout,
@@ -144,6 +132,33 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
+  {
+    path: '/product',
+    component: Layout,
+    redirect: '/product/page',
+    meta: { title: 'Product', icon: 'guide' },
+    children: [
+      {
+        path: 'page',
+        component: () => import('@/views/product/index'),
+        name: 'List',       
+        meta: { title: 'Product'}
+      },
+      {
+        path: 'create',
+        component: () => import('@/views/product/create'),
+        name: 'creatProduct',
+        hidden: true,
+        meta: { title: 'Create Product'}
+      },{
+        path: 'update/:id',
+        component: () => import('@/views/product/create'),
+        name: 'updateProduct',
+        hidden: true,
+        meta: { title: 'Update Product'}
+      }
+    ]
+  },
   {
     path: '/permission',
     component: Layout,
@@ -202,10 +217,10 @@ export const asyncRoutes = [
   },
 
   /** when your routing map is too long, you can split it into small modules **/
-  // componentsRouter,
+  componentsRouter,
   // chartsRouter,
   // nestedRouter,
-  // tableRouter,
+  tableRouter,
 
   {
     path: '/example',
